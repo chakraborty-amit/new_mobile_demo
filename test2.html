@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+    <title>Page Title</title> 
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page" id="home">
+
+    <div data-role="header">
+        <h1>List</h1>
+       
+    </div><!-- /header -->
+
+    <div data-role="content">    
+        <ul id="mylist" data-role="listview" data-theme="a" data-split-icon="delete"  data-split-theme="b" data-inset="true" >
+            
+			
+			<li data-id="20">
+			<a href="#" id="product1">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group  Life Insurance</h3>
+
+			    </a>
+				 <a href="#" id='delete' >Delete</a>
+			   
+				 
+			</li>
+			
+           <li data-id="10">
+			<a href="#" id="product2">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group  Life Insurance</h3>
+
+			    </a>
+			      <a href="#" id='delete' >Delete</a>
+				 
+			</li>
+			
+            <li data-id="30">
+			<a href="#" id="product3" name="aaa">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Term Life Insurance</h3>
+
+			    </a>
+			      <a href="#" id='delete' >Delete</a>
+				 
+			</li>
+        </ul>     
+    </div><!-- /content -->
+
+    
+</div><!-- /page -->
+
+<script>
+	
+	$("#home").live('pageinit', function (evt) {
+	//alert("aaaaa");
+	$("#mylist").on("swiperight",">li",function(e){
+    var li = $(this);
+    var contents = $(li.children()[0]);
+    var item = contents.text(); // Get the item value
+    var itemId = contents.attr("data-customid");
+    
+    var delButton = $("<a>").text("Yes").click(function(e){ 
+            // Delete button handler, fade out menu and remove the row
+            e.stopPropagation();
+            menu.fadeOut(function(){
+                li.remove();
+                // Do something in order to delete item, send request to server or similar
+               // alert("Deleted " + item + " with ID = " + itemId);
+            });
+        });
+});
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Accepted</title> 
+   <!--loading style-->
+    <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+	 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+<script src="script/forcetk.js"></script> 
+<script src="script/jquery-url.js"></script> 
+
+		
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+</style>
+</head> 
+<body> 
+<div data-role="page" data-theme="a" id="contactedpage">
+	
+	<div data-theme="b" data-role="header" data-position="fixed">
+        <h5>
+            XYZ Insurance
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	 <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false" >
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist" data-ajax="false">
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+	 	<br>
+	 <div class="content-primary">
+						
+		<ul id="cList" data-role="listview" data-filter="true" data-filter-placeholder ="Search" data-filter-theme="c" data-theme="b" data-divider-theme="d"  data-inset="true" >
+			<li data-role="list-divider" >Accepted<span class="ui-li-count">3</span></li>
+		</ul>
+		</div><!--/content-primary -->		
+
+		
+
+	</div><!-- /content -->
+
+
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+	
+	</div><!-- /page -->
+
+	
+	<script>
+			 var access_token;
+		 var instance_url;
+		 var client;
+	$(document).bind('pageinit', '#contactedpage', function(){       
+        var loginUrl    = 'https://login.salesforce.com/';
+        var clientId    = '3MVG9A2kN3Bn17hvmoy9tG0LfuBA6ruCTPR2a3BXY9uO55IokKrZTZf1_kcqiWhCYy6aw_ooo4DY_qACbpNk9';
+        var redirectUri = 'https://ec2-54-200-226-66.us-west-2.compute.amazonaws.com:443/new_mobile_demo/home.html';
+        var proxyUrl    = 'https://ec2-54-200-226-66.us-west-2.compute.amazonaws.com:443/new_mobile_demo/proxy.php?mode=native';
+ client = new forcetk.Client(clientId, loginUrl,proxyUrl);
+		selectData();
+   });
+
+
+$(document).on('pagebeforeshow', '#contactedpage', function(){       
+    
+	
+	
+	$(document).on('swiperight','#contactedpage', function()
+               { 
+			
+			  $.mobile.changePage("home.html", {
+              transition: "slide",
+              reverse: true
+              }, true, true);
+              });
+			   
+    $(document).on('swipeleft','#contactedpage', function()
+               {
+			   
+			    $.mobile.changePage("proposed.html", {
+                transition: "slide"
+                }, true, true);
+                });
+			   
+			   
+});
+
+	
+	
+	function showLeads(records) {    
+            $j('#cList').empty();
+			var divider=$j('<li data-role="list-divider" >Recent<span class="ui-li-count">2</span></li>');
+			divider.appendTo('#cList');
+            $j.each(records,
+                function(index,value) {
+                    var newLi = $j('<li></li>');
+                    var newLink = $j('<a id="' +this.Id+ '" data-transition="flip"><h3>' +this.Company+ '</h3><p> Email: '+this.Email+'</p><p> Phone:'+this.Phone+'</p><p class="ui-li-aside"><strong></strong></p></a>');
+					newLink.click(function(e) {
+                        $j.mobile.showPageLoadingMsg();
+						// afsal
+         // alert(records[index].Company);	
+//alert(records[index].Industry);		  
+		 localStorage.Company=records[index].Company;	
+		 localStorage.Industry=records[index].Industry;
+		 localStorage.Name=records[index].Name;
+		 localStorage.Street=records[index].Street;
+	     localStorage.City=records[index].City;
+		 localStorage.State=records[index].State;
+	     localStorage.PostalCode=records[index].PostalCode;
+		 localStorage.Country=records[index].Country;
+	     localStorage.Phone=records[index].Phone;
+		 localStorage.Email=records[index].Email;
+		 localStorage.Id=records[index].Id;
+		
+	   document.location.href = 'acceptedClient.html' ;
+
+                       
+                    });
+                     newLi.append(newLink);            
+                    newLi.appendTo('#cList');
+                });
+            
+            $j.mobile.hidePageLoadingMsg();
+            $j('#cList').listview('refresh');
+        } 
+ 
+            var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+			
+function selectData(){ 
+var DEMODB = openDatabase(shortName, version, displayName, maxSize);
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM SFDCCredentials', [], function (tx, results) {
+   var len = results.rows.length, i;
+   for (i = 0; i < len; i++){
+	 access_token = results.rows.item(i).Authtoken;
+	 instance_url = results.rows.item(i).Instanceurl;
+							client.setSessionToken(access_token, null,
+								instance_url);
+							//client.query("SELECT Id, Company, Email, Phone  FROM Lead where Status = 'Working - Contacted'",
+						       client.query("SELECT Id, Company, Email, Phone, Industry, Name, MobilePhone, Street, City, State, PostalCode, Country FROM Lead where Status = 'Working - Contacted' ",
+								function(response)
+										  {                          	
+										   showLeads(response.records);
+										   }					
+								);
+   }
+ }, null);
+});	
+
+
+}
+
+	</script>
+	 
+	</body>
+	</html>

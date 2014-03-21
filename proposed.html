@@ -1,0 +1,477 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Proposed</title> 
+	
+   <!--loading style-->
+    <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+	 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script>  
+			
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+.mypopup{
+    right: 0 !important;        
+    left: auto !important;
+    width: 80%;
+}
+</style>
+
+</head> 
+<body> 
+<div data-role="page" data-theme="a" id="proposedpage">
+	
+
+ 
+	<div data-theme="b"  data-role="header" data-position="fixed">
+        <h5>
+            XYZ Insurance
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	 <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false" >
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist" data-ajax="false">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+	 	<br>
+	 <div class="content-primary">
+						
+		<ul data-role="listview" id="proposedListView" data-filter="true" data-filter-placeholder ="Search" data-filter-theme="c" data-theme="e" data-divider-theme="d" data-inset="true"  >
+			
+			
+	
+
+		</ul>
+		
+		<ul data-role="listview"  data-theme="b" data-divider-theme="d" data-inset="true"  >
+			<li data-role="list-divider" >Proposal Generated<span class="ui-li-count">1</span></li>
+				<li><a href="#popupBell" class="showDetails" data-rel="popup" data-Id="bell">
+				
+					<h3>ZeroB Insulators</h3>
+					
+					<p>Status : Processed</p>
+					<p class="ui-li-aside"><strong>2 Jun 2013</strong></p>
+				
+			</a></li>
+			
+		
+				<li><a href="#popupBell" class="showDetails" data-rel="popup" data-Id="bell">
+				
+					<h3>Spark LLC</h3>
+					
+					<p>Status : Processed</p>
+					<p class="ui-li-aside"><strong>2 Jun 2013</strong></p>
+				
+			</a></li>
+	</ul>
+	</ul>
+ 
+		</div><!--/content-primary -->		
+
+		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+
+  <div data-role="popup" id="popupDetails" data-transition="flow" data-theme="b" data-overlay-theme="a" style="width:400px">
+	
+	<div class="ui-bar-c ui-corner-all ui-shadow " style="padding:1em">
+		 
+       <div class="ui-grid-a "  >
+  
+	   <div class="ui-block-a ">
+	     <div class="ui-bar ui-bar-b" style="height:50px;">Company :</div>
+       </div>
+	
+				
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;" id="company"></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Industry:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;" id="Industry"></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Name of Contact  :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;"id="name"></div>
+    </div>
+	
+		<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Product Id :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:60px;"id="products"></div>
+    </div>
+	
+
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Status :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:60px;" id="statusOfProposed"></div>
+    </div>
+	
+	
+   </div>
+  </div>
+
+  </div><!--/popup-->  
+  
+   <div data-role="popup" id="popupBell" data-transition="flow" data-theme="e" data-overlay-theme="a"  style="width:400px">
+	
+	<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+		 
+       <div class="ui-grid-a"  >
+  
+	   <div class="ui-block-a ">
+	     <div class="ui-bar ui-bar-b" style="height:50px;">Company :</div>
+       </div>
+	
+				
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">ZeroB Insulators</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Industry:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Communication</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Name of Contact  :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Dante White</div>
+    </div>
+	
+		<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Product Id :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:60px;">HI10768644</div>
+    </div>
+	
+		
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"style="height:60px;">Products:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"style="height:60px;">Health Insurance</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:60px;">Quantity:</div>
+    </div>
+	
+	<div class="ui-block-b" >
+	  <div class="ui-bar ui-bar-d" style="height:60px;">800</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Status :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:60px;">Processed</div>
+    </div>
+	
+	
+   </div>
+  </div>
+
+  </div><!--/popup-->  
+  
+ 
+ </div><!-- /page -->
+
+	<script>
+	
+	
+$(document).on('pageinit', '#proposedpage', function(){
+
+initDatabase();
+getProposedClients();
+//loadClients();
+
+
+
+/*$(document).on('click', '#proposedClient',function(e) {
+	  
+	 
+	  var data=['A1001']
+	  
+	  $("#popupDetails" ).popup( "open" );
+	  
+	  $("#popupDetails").on('popupafteropen', function(){
+   
+           
+		getClientProductDetails(data);
+       var productID=$(this).attr('data-productID');				
+        
+		getPanelData(productID);
+     });
+	
+	//alert("click");
+	
+             
+	
+    }); */
+	
+	$('.showDetails').live('click', listClick);
+
+    function listClick(){
+
+	   
+       var clientID=$(this).attr('data-Id');				
+        
+		//alert("selected: "+clientID);
+		$("#popupDetails" ).popup( "open" );
+		
+		  $("#popupDetails").on('popupafteropen', function(){
+   
+           popupData(clientID);
+						
+        
+     });
+	 
+		
+		//getPanelData(clientID);
+     };
+	
+
+
+       
+  
+   });
+
+$(document).on('pagebeforeshow', '#proposedpage', function(){     
+
+
+			   
+});
+
+
+var DEMODB;
+            var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+
+function initDatabase() {
+
+//alert("init");
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+function getClientProductDetails(data){ 
+
+var productId;
+
+ //DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM PROPOSEDPRODUCTS WHERE ClientId=?', [data[0]], function (tx, results) {
+   var len = results.rows.length, i;
+   
+   for (i = 0; i < len; i++){
+
+ 
+    loadProductData(results.rows.item(i));
+      			
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+
+
+function getProposedClients(){ 
+
+
+
+//alert("getProposedClients");
+$('#proposedListView').empty();
+
+var divider='<li data-role="list-divider" >Submitted</li>';
+
+$('#proposedListView').append(divider);
+ 
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM CONTACT a, PROPOSEDPRODUCTS b WHERE b.ClientId=a.cid', [], function (tx, results) {
+   var len = results.rows.length, i;
+   
+ //alert("len"+len);
+   for (i = 0; i < len; i++){
+
+ //alert(results.rows.item(i).ccompany);
+// alert("record:" + i + " "+results.rows.item(i).ccompany+" " + results.rows.item(i).cid);
+ loadClients(results.rows.item(i));
+ 
+    //loadProductData(results.rows.item(i));
+      			
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+
+function loadClients(record)
+{
+
+
+var company=record.ccompany;
+var clientID=record.cid;
+
+//alert("clientID:"+clientID)
+var newClient='<li><a  id="proposedClient"class="showDetails" data-rel="popup" data-Id="'+clientID+'" ><h3>'+company+'</h3><p>status : Submitted</p></a></li>'
+			
+$('#proposedListView').append(newClient);
+				   
+$('#proposedListView').listview('refresh');				
+					
+					
+							
+
+}
+ var clientCompany;
+ var clientIndustry;
+ var clientContactName;
+ var selectedProducts;
+
+
+function popupData(clientID)
+{
+
+//alert("popdata"+clientID);
+var strPrd="";
+var selectedProducts="";
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM PROPOSEDPRODUCTS WHERE ClientId=?', [clientID], function (tx, results) {
+   var len = results.rows.length, i;
+ 
+   for (i = 0; i < len; i++){
+
+
+    strPrd=results.rows.item(i).ProductId+","+strPrd;
+      			
+   }
+   var lastIndex = strPrd.lastIndexOf(",")
+
+   selectedProducts = strPrd.substring(0, lastIndex);
+   if(selectedProducts!=="null") 
+   $('#products').html(selectedProducts);
+
+ }, null);
+ 
+ 
+ 
+});
+
+
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM CONTACT  WHERE cid=?', [clientID], function (tx, results) {
+   var len = results.rows.length, i;
+ 
+clientCompany = results.rows.item(0).ccompany;
+clientIndustry = results.rows.item(0).cindustry;
+clientContactName = results.rows.item(0).cname;
+ 
+if(clientCompany!=="null")
+$('#company').html(clientCompany);
+if(clientIndustry!=="null") 
+$('#Industry').html(clientIndustry);
+if(clientContactName!=="null") 
+$('#name').html(clientContactName);
+
+ }, null);
+ 
+ 
+ 
+});	
+
+var status="Submitted";  
+$('#statusOfProposed').html(status); 
+} 	
+				
+	
+	</script>
+
+	
+	</body>
+	</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	
+	<title>Contact Client </title>
+		
+	<!--loading style-->	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link type="text/css" rel="stylesheet" href="/css/style.css" />
+	  
+	<!--loading scripts-->  
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+   
+
+
+
+
+    </head>
+    <body>
+		
+
+		
+
+
+	
+	
+	<script type="text/javascript">
+		
+             $(document).ready(function() {
+
+			 var jsonObj = [{'Id':'1','Username':'Ray','FatherName':'Thompson'},  
+               {'Id':'2','Username':'Steve','FatherName':'Johnson'},
+               {'Id':'3','Username':'Albert','FatherName':'Einstein'}];
+			   
+
+function setUsername(id, newUsername) {
+  for (var i=0; i<jsonObj.length; i++) {
+    if (jsonObj[i].Id === 3) {
+      jsonObj[i].Username = "thomus";
+      return;
+    }
+  }
+}
+
+	setUsername(3,"thomus");
+	
+	for (var i=0; i<jsonObj.length; i++) {
+    //alert(jsonObj[i].Username );
+    }
+
+	
+      
+			
+			
+			  });
+        </script>
+    
+	</body>
+</html>

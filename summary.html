@@ -1,0 +1,583 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Summary</title> 
+ 
+	
+    <!--loading style-->
+    <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+	
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+
+	
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+
+.ui-collapsible-heading .ui-btn-text{ display:block;}
+.ui-collapsible-heading .ui-li-count { position: absolute; font-size: 11px; font-weight: bold; padding: .2em .5em; top: 50%; margin-top: -.9em; right: -10px;  border-radius: 1em 1em 1em 1em; background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;  border: 1px solid #CCCCCC; color: #222222;font-weight: bold;text-shadow: 0 1px 0 #FFFFFF; }
+
+</style>
+	
+</head> 
+<body> 
+
+	<div data-role="page" data-theme="a" class="type-interior" id="summaryPage">
+
+   <div data-theme="b" data-role="header" data-position="fixed">
+        <h5>
+            XYZ Insurance
+        </h5>
+		
+		<a href="recommendedProducts.html" data-icon="back" data-ajax="false">Recommended</a>
+		<a href="accepted.html" data-icon="home">Contacted</a>
+    </div>	
+
+	<div data-role="content">
+
+		
+		<div class="content-primary">
+
+  <div class="ui-grid-a"  >
+     
+	 
+	
+
+	<div class="ui-block-a ">
+	 <div class="ui-bar ui-bar-b" style="height:50px;">Client Name :</div>
+    </div>
+				
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" id="clientName" style="height:50px;"></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Industry:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" id="industry" style="height:50px;"></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Name of Contact  :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" id="contact" style="height:50px;"></div>
+    </div>
+	
+	
+
+
+	
+</div><!-- /grid-b -->
+ 
+<br><br>		
+<h3> Products</h3>
+<br>	
+
+<ul data-role="listview" id="productList" data-theme="b" data-split-icon="check"  data-split-theme="b" data-inset="true" >
+
+			
+			
+</ul>
+			
+	
+	  
+					
+		</div><!--/content-primary -->	
+
+
+<div class="content-secondary">
+
+
+	<div class="ui-grid-b"  >
+	
+	 <div class="ui-block-a" style="height:100px">
+	 
+    </div>
+	
+	 <div class="ui-block-a">
+	 
+    </div>
+	
+	 <div class="ui-block-b">
+	 <a href="#confirmPopup" data-role="button" data-theme="b" data-icon="forward" data-rel="popup" data-position-to="window" data-transition="pop">Get Quote</a>
+    </div>
+	
+	
+ <div class="ui-block-a" style="height:100px">
+	 
+    </div>
+
+   </div>	
+	
+</div><!--/Secondary-primary -->
+
+	</div><!-- /content -->
+
+	<div data-role="footer"data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+	
+	
+	<div data-role="panel" id="productDetailPanel" data-theme="a" data-position="right" data-display="overlay">
+       
+	 <div id="panelContent">
+	
+
+    </div>
+
+    </div><!-- /panel -->
+	
+	
+		<div data-role="panel" id="Panel1" data-theme="a" data-position="right" data-display="overlay">
+       
+	
+
+	 <h4>Group Term Life Insurance</h4>
+    
+	 <div class="ui-grid-a"  >
+	
+	<div class="ui-block-a ">
+	 <div class="ui-bar ui-bar-d" style="height:50px;">Product Id :</div>
+    </div>
+	
+    <div class="ui-block-b">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">LE444899</div>
+    </div>				
+	
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Frequency</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Half Year</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Term</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Half Year</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Number:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">2000</div>
+    </div>
+	
+		<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-d" style="height:50px;">Price:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">200000</div>
+    </div>
+	
+	
+	
+
+
+	
+</div><!-- /grid-b -->
+
+    </div><!-- /panel -->
+
+	
+	   <div data-role="popup" id="confirmPopup" data-transition="pop" style="width:600px" data-theme="a" data-overlay-theme="b" class="ui-corner-all" >
+   
+   <div data-theme="a"  data-role="header"  class="ui-corner-all">
+        <h5>
+            Confirm Quote
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	<p>Are you sure you want to go ahead with this </p>
+	<ul data-role="listview" id="summaryList" data-theme="a" data-split-icon="delete"  data-split-theme="b" data-inset="true" >
+			
+           
+    </ul>
+       
+	  
+	 </div><!--content-->
+	 
+	 	
+
+	<div data-role="footer" style="height:40px" data-theme="a" class="ui-bar">
+		
+              
+        <a href="#"  data-role="button" class="ui-btn-left"  data-rel="back" data-transition="flow" data-theme="b">Cancel</a>
+         <a href="#" data-role="button" id="confirmButton"class="ui-btn-right" data-inline="true"  data-inset="true" data-transition="flow" data-theme="b" data-ajax="false">Confirm</a>
+		
+		
+	</div>
+
+  </div><!--/popup--> 
+  
+	</div><!-- /page -->
+	
+	<script>
+	
+var products="";	
+$(document).on('pageinit', '#summaryPage', function(){       
+  
+  initDatabase();
+  selectData();
+  getClientData();
+ /*$("#summaryPage #product1").on("click", function() {
+
+	      $("#productDetailPanel").panel( "open");
+
+	    });
+	  
+	  $("#summaryPage #product2").on("click", function() {
+	
+	
+         $("#Panel1").panel( "open");
+	
+	    });*/
+	 
+	
+$('.product_detail_li').live('click', listClick);
+
+    function listClick(){
+
+       var productID=$(this).attr('data-productID');				
+        
+		getPanelData(productID);
+     };
+
+$(document).on('click', '#confirmButton',function(e) {
+	  
+	  
+	  var id=localStorage.ClientId;
+	
+	  var dat=[id,products,'Processing'];
+      insertToPrposedProductTable(dat);
+	  
+	  /* $.mobile.changePage("thanksPage.html", {
+            transition: "slide",
+            reverse: true
+        }, true, true);*/
+		
+	//  document.location.href = 'thanksPage.html' ;
+	
+    }); 
+	
+ });
+
+$(document).on('pagebeforeshow', '#summaryPage', function(){       
+
+	
+ });
+            var DEMODB;
+            var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+
+function initDatabase() {
+
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			createTable();
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+
+function createTable(){
+
+	
+	DEMODB.transaction(
+        function (transaction) {
+        	transaction.executeSql('CREATE TABLE IF NOT EXISTS PROPOSEDPRODUCTS(ClientId TEXT NOT NULL PRIMARY KEY,ProductId TEXT,Status TEXT);', [], nullDataHandler, errorHandler);
+			//alert("table created");
+			
+			
+        }
+    );
+	
+	
+}
+
+
+
+/***
+**** INSERT INTO TABLE ** 
+***/
+function insertToPrposedProductTable(data){
+
+
+	  DEMODB.transaction(
+	    function (transaction) {
+    
+		
+transaction.executeSql("INSERT INTO PROPOSEDPRODUCTS(ClientId, ProductId,Status) VALUES (?, ?, ?)", [data[0],data[1],data[2]]);
+		
+	
+		  $.mobile.changePage("thanksPage.html", {
+            transition: "slide",
+            reverse: true
+        }, true, true);
+		//document.location.href = 'thanksPage.html' ;
+	    }
+	);	
+	DEMODB.transaction(function (tx) {
+
+  tx.executeSql('SELECT * FROM PROPOSEDPRODUCTS', [], function (tx, results) {
+   var len = results.rows.length, i;
+
+var test="";
+   for (i = 0; i < len; i++){
+
+      test=test+","+results.rows.item(i).ProductId;
+      
+       
+     // loadConfirmationProducts(results.rows.item(i));
+      //loadProducts(results.rows.item(i));	 
+   }
+   
+    
+ }, null);
+ 
+ 
+ 
+});
+
+}
+
+function selectData(){ 
+var productId;
+var ClientId;
+
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+
+  tx.executeSql('SELECT * FROM PRODUCTS a,CART b WHERE a.ProductId == b.ProductId', [], function (tx, results) {
+   var len = results.rows.length, i;
+  
+
+  $('#summaryList').empty();
+  $('#productList').empty();
+   for (i = 0; i < len; i++){
+
+      products=products+results.rows.item(i).ProductId;
+      
+       
+      loadConfirmationProducts(results.rows.item(i));
+      loadProducts(results.rows.item(i));	 
+   }
+    
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+
+
+function getClientData(){
+
+
+var company;
+var contactname;
+var industry;
+
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+var id=localStorage.ClientId;
+
+DEMODB.transaction(function (tx) {
+
+  tx.executeSql('SELECT * FROM CONTACT  WHERE cid = ?', [id], function (tx, results) {
+   var len = results.rows.length, i;
+  
+
+  
+   for (i = 0; i < len; i++){
+
+      contactname=results.rows.item(i).cname;
+	  company=results.rows.item(i).ccompany;
+	  industry=results.rows.item(i).cindustry;
+    
+	    if(company!=="null"){
+		 $('#clientName').text(company);}
+		 
+        if(industry!=="null")		 
+		 $('#industry').text(industry);
+		 
+		if(contactname!=="null")
+		 $('#contact').text(contactname);
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+
+function loadProducts(record)
+{
+
+var productId;
+var productName;
+var prductDescription;
+var productImage;  
+     productId = record.ProductId;
+	 productName = record.ProductName;
+     prductDescription = record.ProductDetails;
+	 productImage = record.ProductImage;
+	
+	  var newLink='<li><a id="'+productId+'" class="product_detail_li" data-icon="check" data-productID="'+productId+'"><img src="'+productImage+'"></img> <h3>'+productName+'</h3> <p>click here to view the details. </p></a></li>'  ;    
+ 
+                    
+			
+		    $('#productList').append(newLink);
+				   
+            $('#productList').listview('refresh');
+			
+			/*$('#productList li a').click(function(){   
+                 
+				var productID=$(this).attr('data-productID');             
+               
+				getPanelData(productID);
+         
+	         });*/
+
+        } 
+
+
+
+var productName="";
+var frequency="";
+var term="";
+var quantity="";			
+var newData;
+function getPanelData(productID){ 
+
+
+DEMODB.transaction(function (tx) {
+
+  tx.executeSql('SELECT ProductName FROM PRODUCTS  WHERE ProductId = ?', [productID], function (tx, results) {
+   productName= results.rows.item(0).ProductName;
+   
+  
+ }, null);
+ 
+
+   tx.executeSql('SELECT * FROM CART  WHERE ProductId = ?', [productID], function (tx, results) {
+  
+   frequency= results.rows.item(0).Frequency;
+   term= results.rows.item(0).Term
+   quantity= results.rows.item(0).Quantity
+	 
+	  newData='<h4>'+productName+'</h4> <div class="ui-grid-a" id="productDetail" ><div class="ui-block-a "><div class="ui-bar ui-bar-d" style="height:50px;">Product Id</div></div><div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:50px;">'+productID+'</div></div><div class="ui-block-a"> <div class="ui-bar ui-bar-d" style="height:50px;">Frequency</div> </div><div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:50px;">'+frequency+'</div> </div><div class="ui-block-a"><div class="ui-bar ui-bar-d" style="height:50px;">Term</div></div><div class="ui-block-b"><div class="ui-bar ui-bar-b" style="height:50px;">'+term+'</div></div><div class="ui-block-a"><div class="ui-bar ui-bar-d" style="height:50px;">Quantity</div></div><div class="ui-block-b"> <div class="ui-bar ui-bar-b" style="height:50px;">'+quantity+'</div></div><div class="ui-block-a"> </div></div>';
+ 
+   
+ }, null);
+ 
+
+  
+ 
+ 
+ $("#productDetailPanel").panel( "open");
+ $('#panelContent').html(newData);
+ $('[data-role=page]').trigger('pagecreate');
+			
+});	
+
+
+
+}
+			
+function loadConfirmationProducts(record)
+{
+
+var ClientName;
+var productName;
+var prductDescription;
+var productImage;  
+     productId = record.ProductId;
+	 productName = record.ProductName;
+     prductDescription = record.ProductDetails;
+	 productImage = record.ProductImage;
+	
+	  var newLink='<li><img src="'+productImage+'"></img><h3>'+productName+'</h3></li>'  ;    
+    
+                    
+			
+		    $('#summaryList').append(newLink);
+				   
+            $('#summaryList').listview('refresh');
+			
+			$('#summaryList li a').click(function(){   
+                              
+              
+			  
+             	
+				
+
+	         });
+
+        } 
+		
+		function errorHandler(transaction, error){
+ 	if (error.code==1){
+ 	} else {
+	    console.log('Oops.  Error was '+error.message+' (Code '+error.code+')');
+ 	}
+    return false;
+}
+
+
+function nullDataHandler(){
+	console.log("SQL Query Succeeded");
+}
+</script>
+
+	</body>
+	</html>

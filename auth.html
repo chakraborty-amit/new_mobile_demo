@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script type="text/javascript" src="script/jquery1.8.js"></script>
+	 <script type="text/javascript">
+        // OAuth Configuration
+
+
+       $(document).ready(function() {
+            $('#message').click(function(){ 
+              /*$.ajax({
+                        type: "GET",
+                        url: "https://ap1.salesforce.com/services/data/v27.0/query?q=SELECT%20Name%20FROM%20Account",
+                        cache: false,
+                        success: function(data){
+                       // $("#message").html(response.records[0].Name);
+						 alert(response.records[0].Name);
+						 },
+		                beforeSend: function(xhr) {
+                
+                          xhr.setRequestHeader("Authorization", "OAuth " + "00D90000000ejWW!AR4AQIaIhQzqchcpMHOlogyYBHaoiwl0U5EKCfVGRwgtNMj_vamcEJA4W7u8VrUz4NSXgvM4tGWGGcs6axOzUoOae3nwbZE2");
+                          xhr.setRequestHeader("Access-Control-Allow-Origin" , "*");
+						  xhr.setRequestHeader('SalesforceProxy-Endpoint', "https://ap1.salesforce.com/services/proxy");
+                            }
+		  
+		  });	 
+				
+            });
+			*/
+			 var url = "https://ap1.salesforce.com/services/data/v27.0/query?q=SELECT%20Name%20FROM%20Account";
+			 sessionid = "00D90000000ejWW!AR4AQIaIhQzqchcpMHOlogyYBHaoiwl0U5EKCfVGRwgtNMj_vamcEJA4W7u8VrUz4NSXgvM4tGWGGcs6axOzUoOae3nwbZE2";
+			
+			$j.ajax({
+            type: method || "GET",
+            async: this.asyncAjax,
+            url: (this.proxyUrl !== null) ? this.proxyUrl: url,
+            contentType: method == "DELETE"  ? null : 'application/json',
+            cache: false,
+            processData: false,
+            data: payload,
+            success: callback,
+            error: (!this.refreshToken || retry ) ? error : function(jqXHR, textStatus, errorThrown) {
+                
+                    error(jqXHR, textStatus, errorThrown);
+                
+            },
+            dataType: "json",
+            beforeSend: function(xhr) {
+                if (that.proxyUrl !== null) {
+                    xhr.setRequestHeader('SalesforceProxy-Endpoint', url);
+                }
+                xhr.setRequestHeader(that.authzHeader, "OAuth " + );
+                xhr.setRequestHeader('X-User-Agent', 'salesforce-toolkit-rest-javascript/' + "v27.0");
+            }
+        });
+			
+        });
+       	
+		  
+	</script>
+    <button id="message">A button element</button>
+  </head>
+</html>  

@@ -1,0 +1,118 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Home</title> 
+ 
+	
+   <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+ 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+
+
+	
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+
+.ui-collapsible-heading .ui-btn-text{ display:block;}
+.ui-collapsible-heading .ui-li-count { position: absolute; font-size: 11px; font-weight: bold; padding: .2em .5em; top: 50%; margin-top: -.9em; right: -10px;  border-radius: 1em 1em 1em 1em; background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;  border: 1px solid #CCCCCC; color: #222222;font-weight: bold;text-shadow: 0 1px 0 #FFFFFF; }
+
+</style>
+	
+</head> 
+<body> 
+
+	<div data-role="page" data-theme="a" class="type-interior" id="thanksPage">
+
+   <div data-theme="b" data-role="header">
+        <h5>
+            XYZ Insurance
+        </h5>
+		
+		 <a href="home.html" data-ajax="false" data-role="button" class="ui-btn-left"   data-transition="flow" data-theme="b">Open</a>
+		  <a href="accepted.html"  data-ajax="false" data-role="button" class="ui-btn-right"   data-transition="flow" data-theme="b">Contacted</a>
+    </div>	
+
+
+ <div data-role="content">
+	 
+	 <div class="content-primary">
+  
+	
+		<table style="width=100%">
+        <tr>
+        <td width=30%/>
+        <td width=40%/>
+        <td width=30%/>
+       
+        </tr>
+		<tr>
+		<td></td>
+		<td><h1>Thank you for using this App</h1></td>
+		<td></td>
+		</tr>
+		
+		<tr>
+		<td></td>
+		<td><h2>Your request for the Quotation is submitted</h2></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td><h3> You can track the status in the Proposed Tab </h3></td>
+		<td></td>
+		</tr>
+		
+		</table>
+		
+		
+		
+        
+		</div><!--/content-primary -->		
+	
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+		 <a href="proposed.html"  data-role="button" class="ui-btn-right"  data-transition="flow" data-ajax="false" data-theme="b">Proposed</a>
+	</div>
+
+	</div><!-- /page -->
+	
+	<script>
+	
+	
+$(document).on('pageinit', '#thanksPage', function(){       
+  
+  
+ 
+   });
+
+$(document).on('pagebeforeshow', '#thanksPage', function(){       
+    
+	
+	
+	
+				
+});	
+
+
+
+	</script>
+
+	</body>
+	</html>

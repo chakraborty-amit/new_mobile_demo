@@ -1,0 +1,389 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardController="Lead"> 
+<head>
+    <meta charset="utf-8"/>
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Home</title> 
+    
+    <apex:stylesheet value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery.mobile-1.3.0.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery-1.9.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery.mobile-1.3.0.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'cordova.force.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'backbone/underscore-1.4.4.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'force.entity.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'SObjectData.js')}"/>
+    
+    
+    <style>
+        .footer {
+            position: fixed;
+            z-index: 10;
+            bottom: 0;
+            width: 100%;
+            
+        }
+        
+        .ui-collapsible-heading .ui-btn-text{ display:block;}
+        .ui-collapsible-heading .ui-li-count { position: absolute; font-size: 11px; font-weight: bold; padding: .2em .5em; top: 50%; margin-top: -.9em; right: -10px;  border-radius: 1em 1em 1em 1em; background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;  border: 1px solid #CCCCCC; color: #222222;font-weight: bold;text-shadow: 0 1px 0 #FFFFFF; }
+        
+    </style>
+
+    <c:RemoteTK />
+    
+    <script type="text/javascript">
+        var $j = jQuery.noConflict(); 
+        var client = new remotetk.Client();
+        Force.init(null,null,client,null);
+        
+        var Leads = new SObjectData();
+        Leads.errorHandler = displayError;
+        
+        $j(document).ready(function() {
+                //regBtnClickHandlers();
+                getAllLeads();
+            });
+        
+        function getAllLeads() {
+            Leads.fetch('soql','SELECT id, Name, LastTransferDate, Company, Industry, Email, Phone,Street, City, State,PostalCode from Lead LIMIT 100',function() {
+                showLeads(Leads.data());
+            });
+        }
+
+        function showLeads(records) {    
+            $j('#cList').empty();
+            $j.each(Leads.data(),
+                function() {
+                    var newLi = $j('<li></li>');
+                    
+                    var newLink = $j('<a id="' +this.Id+ '" data-transition="flip"><h3>' +this.Name+ '</h3><p>click here to view client info.</p><p class="ui-li-aside"><strong>' +this.LastTransferDate+ '</strong></p></a>');
+                    
+                    
+                      newLink.click(function(e) {
+                        e.preventDefault();
+                        $j.mobile.showPageLoadingMsg();
+                        $j('#Company').html(Leads.findRecordById([this.id]).Company);
+                        $j('#Industry').html(Leads.findRecordById([this.id]).Industry);
+                        $j('#MobilePhone').html(Leads.findRecordById([this.id]).Phone);
+                        $j('#ContactName').html(Leads.findRecordById([this.id]).Name);
+                        $j('#Street').html(Leads.findRecordById([this.id]).Street);
+                        $j('#City').html(Leads.findRecordById([this.id]).City);
+                        $j('#State').html(Leads.findRecordById([this.id]).State);
+                        $j('#Zip').html(Leads.findRecordById([this.id]).PostalCode);
+
+
+                        $j('#MobilePhone').html(Leads.findRecordById([this.id]).MobilePhone);
+                        $j('#Email').html(Leads.findRecordById([this.id]).Email)
+                        $j('#error').html('');
+                       
+                        $j.mobile.changePage('#detailspage', {changeHash: true});
+                    });
+
+
+
+                    newLi.append(newLink);            
+                    newLi.appendTo('#cList');
+                });
+            
+            $j.mobile.hidePageLoadingMsg();
+            $j('#cList').listview('refresh');
+        }      
+        
+        
+        function successCallback(r){
+            getAllLeads();
+            $j.mobile.changePage('#home', {changeHash: true});
+
+        }
+        
+        function displayError(e){
+            console.log(e);
+            $j('#error').html(e[0].message);
+        }
+        
+    </script>    
+
+
+    
+</head> 
+<body> 
+
+    <div data-role="page" data-theme="a" class="type-interior" id="homepage">
+
+        <div data-theme="b" data-role="header" data-position="fixed">
+           <h1>
+                XYZ Insurance
+            </h1>
+        </div>  
+            <h2 style="color:red" id="error"></h2>
+        <div data-role="content" id="homeContent">
+            <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+                <ul>
+                    <li>
+                        <a href="#home" data-transition="slide" data-theme="a" data-icon="" class="ui-btn-active ui-state-persist">
+                            Open
+                        </a>
+                    </li>
+                    <li>
+                        <a href="accepted" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                            Contacted
+                        </a>
+                    </li>
+                    <li>
+                        
+                        <a href="proposed" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                            Proposed
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="content-primary">
+
+
+                <div data-role="collapsible-set" >
+                    
+                    <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="b" data-content-theme="e">
+                        <h2>New</h2>
+                        
+                        <ul id="cList" data-role="listview" data-filter="true" data-filter-placeholder ="Search Client" data-filter-theme="c" data-divider-theme="d" >
+                        </ul>
+                    </div>
+                    <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="a" data-content-theme="b">
+                        <h1>Pending<span class="ui-li-count">1</span></h1>
+                        
+                        
+                        <ul data-role="listview" data-divider-theme="d" data-filter="true" data-filter-placeholder ="Search Client" data-filter-theme="c">
+                            
+                            
+                            <li>
+                                <a href="contactedClient1" data-transition="flip">
+                                    <h3>Bosch</h3>
+                                    <p>click here to view client info.</p>
+                                    <p class="ui-li-aside"><strong>20-sep-2013</strong></p>
+                                </a>
+                            </li>
+                            
+
+                            
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                
+                
+            </div><!--/content-primary -->      
+            
+
+        </div><!-- /content -->
+
+        <div data-role="footer" class="footer" data-theme="b">
+            
+            <p>Developed by &copy; 2013 Accenture Technology Labs</p>
+        </div>
+
+    </div><!-- /page -->
+    
+    <div data-role="page" id="detailspage"  data-theme="a">
+        <div data-theme="b" data-role="header" data-position="fixed">
+            <h5>
+                XYZ Insurance
+            </h5>
+        </div>
+        <div data-role="content">
+
+
+
+            <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+                <ul>
+                    <li>
+                        <a href="#home" data-transition="flip" data-direction="reverse" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist">
+                            Open
+                        </a>
+                    </li>
+                    <li>
+                        <a href="accepted" data-transition="slide" data-theme="a" data-icon="" >
+                            Contacted
+                        </a>
+                    </li>
+                    <li>
+                        <a href="proposed" data-transition="slide" data-theme="a" data-icon="">
+                            Proposed
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <br/>
+
+
+
+
+            <div class="content-primary">
+
+                <div class="ui-grid-a"  >
+                    <div class="ui-block-a ">
+                        <div class="ui-bar ui-bar-c" style="height:50px;">Client Name :</div>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-d" style="height:50px;" id="Company"></div>
+                    </div>
+
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:50px;">Industry:</div>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-d" style="height:50px;" id="Industry"></div>
+                    </div>
+
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:50px;">Name of Contact  :</div>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-d" style="height:50px;" id="ContactName"></div>
+                    </div>
+
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-c"  style="height:110px;">Address :</div>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-d"  style="height:110px;">
+                            <label id="Street"></label><br/>
+                            <label id="City"></label>,
+                            <label id="State"></label>,
+                            <label id="Zip"></label>
+                        </div>
+                    </div>
+
+
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:60px;">Mobile Number :
+                        </div>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-d" style="height:60px;"><a id="MobilePhone" href=""   data-role="button" data-theme="c"></a></div>
+                    </div>
+
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-c" style="height:60px;">Email Id :</div>
+                    </div>
+
+                    <div class="ui-block-b" >
+                        <div class="ui-bar ui-bar-d" style="height:60px;"><a id ="Email" href="" data-role="button" data-theme="d"
+                            rel="external"></a></div>
+                        </div>
+                        <div class="ui-block-a">
+                            <div class="ui-bar ui-bar-c"  style="height:60px;">Skype Id :</div>
+                        </div>
+
+                        <div class="ui-block-b">
+                            <div class="ui-bar ui-bar-d"  style="height:60px;"><a id="Skype" href="" data-role="button" data-theme="d"></a></div>
+                        </div>
+
+
+
+
+
+                    </div><!-- /grid-b -->
+
+
+                    <div data-role="collapsible-set">
+
+
+
+                        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="b" data-content-theme="c">
+                            <h3>Map</h3>
+                            <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+
+                                <div id="map_canvas" class="map rounded"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!--context Primary-->
+
+                <div class="content-secondary">
+
+                    <div class="ui-grid-b">
+
+
+                        <div class="ui-block-a" style="height:60px"></div>
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b" ><a href="#contactedDialog"  data-role="button" data-rel="dialog" data-theme="b" data-transition="slidedown">Contacted</a></div>
+                        <div class="ui-block-c">    </div>
+
+                        <div class="ui-block-a" style="height:80px"></div><!--some issue with adding to avoid it remove later-->
+
+                    </div><!-- /grid-b -->
+
+                </div><!--context secondary-->
+
+            </div><!-- /content -->
+
+            <div data-role="footer" class="footer" data-theme="b">
+
+                <p>Developed by &copy; 2013 Accenture Technology Labs</p>
+            </div>  
+
+        </div><!-- /Page -->    
+        <!-- Start of second page -->
+        <div data-role="page" id="contactedDialog">
+            <div data-role="header"  data-theme="b">
+                <h1>
+                    XYZ insurance
+                </h1>
+            </div>
+
+            <div data-role="content"  data-theme="b">
+
+                <div data-role="fieldcontain">
+                    <label for="mydate">Meeting Date</label>
+
+                    <input name="mydate" id="mydate" type="date" data-role="datebox" data-options='{"mode": "datebox"}'/>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="textarea2">
+                        Meeting Notes
+                    </label>
+                    <textarea name="" id="textarea2" placeholder=""></textarea>
+                </div>
+                <div class="ui-grid-a">
+
+
+                    <div class="ui-block-a">
+
+                        <a href="accepted.html" data-theme="b" data-icon="forward" data-iconpos="left" data-role="button"> Accept</a>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <a href="home.html" data-theme="b"  data-icon="delete" data-iconpos="left" data-role="button"> Reject</a>
+                    </div>
+
+                </div>
+
+            </div> 
+
+            
+
+            <div data-role="footer"  data-theme="c">
+                <h4>
+
+                </h4>
+            </div>
+        </div> <!-- /page -->    
+
+</body>    
+</apex:page>
+                                        

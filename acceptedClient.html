@@ -1,0 +1,364 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Accepted Client </title>
+  
+   <!--loading style-->
+    <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+	 <link type="text/css" rel="stylesheet" href="css/jquery-date-box-style.css" />
+	 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery-url.js"></script> 
+ <script src="script/jquery-date-box-core.js"></script>
+ <script type="script/datePicker.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+		
+				
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+</style>
+
+    </head>
+    <body>
+		
+<div data-role="page" id="acceptedClientPage"  data-theme="a">
+	<script>
+	$("#acceptedClientPage").bind("pageshow", function(event){
+	
+	
+	initDatabase();
+         	
+	     var company=localStorage.Company;
+		 var industry=localStorage.Industry;
+		 var contactname=localStorage.Name;
+		 var street=localStorage.Street;
+		 var city=localStorage.City;
+		 var state=localStorage.State;
+		 var zip=localStorage.PostalCode;
+		 var country=localStorage.Country;
+		 var phone=localStorage.Phone;
+		 var email=localStorage.Email;
+		 id=localStorage.Id;
+		 var meetingDate;
+		 var meetingNote;
+		 if(company!=="null"){
+		 $('#Company').text(company);}
+		 
+        if(industry!=="null")		 
+		 $('#Industry').text(industry);
+		 
+		if(contactname!=="null")
+		 $('#ContactName').text(contactname);
+		 if(street!=="null")
+		 $('#Street').text(street);
+		 if(city!=="null")
+	     $('#City').text(city);
+		 if(state!=="null")
+		 $('#State').text(state);
+		 if(zip!=="null")
+	     $('#Zip').text(zip);
+		 if(country!=="null")
+		 $('#Country').text(country);
+		 if(phone!=="null")
+	     $('#Phone').text(phone);
+		 if(email!=="null")
+		 $('#Email').text(email);
+		 if(id!=="null")
+		 $('#Id').text(id);
+      
+	  getMeetingData();
+	  
+
+  
+	
+	});
+
+	   var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+function initDatabase() {
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+
+function getMeetingData(){ 
+
+
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM CONTACT  WHERE cid = ?', [id], function (tx, results) {
+   var len = results.rows.length, i;
+   
+
+   for (i = 0; i < len; i++){
+
+  // alert(results.rows.item(i).meetingNote);
+ if(results.rows.item(i)!=="null")
+		 $('#meetingNote').text(results.rows.item(i).meetingNote);
+		  $('#meetingDate').text(results.rows.item(i).meetingDate);
+      			
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+	</script>
+      <div data-theme="b" data-role="header"  data-position="fixed">
+         <h5>
+            XYZ Insurance
+          </h5>
+     </div>
+    <div data-role="content">
+		
+		  	
+						
+		<div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="a" data-icon="" >
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist" >
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="a" data-icon="">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+		
+		
+		<br>
+		 
+		 
+	
+		
+<div class="content-primary">
+		
+ <div class="ui-grid-a"  >
+	<div class="ui-block-a ">
+	 <div class="ui-bar ui-bar-b" style="height:50px;">Company:</div>
+    </div>
+				
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;"  id="Company"></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Industry:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;" id="Industry"> </div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Name of Contact  :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" style="height:50px;" id="ContactName"></div>
+    </div>
+	
+		<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:110px;">Address :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:110px;">
+	                         <label id="Street"></label><br>
+                            <label id="City"></label>
+                            <label id="State"></label>
+							<label id="Country"></label>
+                            <label id="Zip"></label>
+
+	  
+	   <div class="ui-grid-b"  >
+	<div class="ui-block-a "> </div>
+	<div class="ui-block-b "> </div>
+   
+	<div class="ui-block-c"><a href="#popupMap" data-role="button" data-rel="popup"  data-theme="d" data-inline="true" data-mini="true" data-transition="slidedown" data-position-to="window" >View On Map</a> </div>
+	</div>
+	  
+	
+			
+	  </div>
+    </div>
+	
+		
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"style="height:60px;">Mobile Number :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"style="height:60px;"><a href="'tel:'+Phone"   data-role="button" data-theme="c" id="Phone"></a></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:60px;">Email Id :</div>
+    </div>
+	
+	<div class="ui-block-b" >
+	  <div class="ui-bar ui-bar-d" style="height:60px;"><a id="Email" href="'mailto:'+Email" data-role="button" data-theme="d"
+  rel="external"></a></div>
+    </div>
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Skype Id :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d"  style="height:60px;"><a id="Skype"  href="skype:steve-beckner?call" data-role="button" data-theme="d">steve-beckner</a></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Meeting Date :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" id="meetingDate" style="height:60px;"></div>
+    </div>
+
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b"  style="height:60px;">Meeting Note :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-d" id="meetingNote" style="height:60px;"></div>
+    </div>
+
+
+	
+</div><!-- /grid-b -->
+ 
+
+
+</div><!--content-primary-->
+	
+	<div class="content-secondary">
+	
+	<div class="ui-grid-b" >
+	
+	 <div class="ui-block-a" style="height:60px"></div>
+
+	 <div class="ui-block-a" ></div>
+	  <div class="ui-block-b" ><a href="initiateQuestions.html" data-theme="b" data-icon="forward" data-iconpos="left" data-role="button" id="initiate_button" data-ajax="false"   data-inset="true"> Initiate Proposal</a></div>
+
+	 </div>
+	 
+	 <div class="ui-grid-d" >
+	 <div class="ui-block-a" style="height:60px"></div>
+	  <div class="ui-block-b"></div>
+	   <div class="ui-block-c"></div>
+	    <div class="ui-block-d"></div>
+	 <div class="ui-block-e" > <a href="#" data-theme="b" data-icon="forward" data-iconpos="left" data-role="button" id="continue_button" data-ajax="false"  data-inline="true"  data-inset="true"> demo</a></div>
+	 
+	<div class="ui-block-a" style="height:100px"></div><!--some issue with footer adding to avoid it remove later-->
+	 </div>
+	 
+    </div><!--content-secondary -->
+	
+
+		</div><!-- /content -->
+	
+<div data-role="footer"  data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>	
+
+	
+	<div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a"  data-tolerance="15,15">
+ 
+    <a href="#" data-rel="back" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+ 
+ 	<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+    <iframe src="map.html" width="480" height="320" seamless></iframe>
+	</div>
+ 
+    </div><!--popup-->
+	
+</div><!-- /Page -->	
+				
+		
+		
+
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="/script/jquery.ui.map.js"></script>	
+    <script type="text/javascript" src="/script/jquery.ui.map.extensions.js"></script>
+	
+	
+	
+	<script type="text/javascript">
+		
+
+$(document).on('pageinit', '#acceptedClientPage', function(){       
+  
+
+    $(document).on('click', '#continue_button',function(e) {
+	  
+	  $.mobile.changePage("firstquestions.html", {
+              transition: "slide",
+              reverse: false
+              }, true, true);
+             
+	
+    }); 
+	
+	  $(document).on('click', '#initiate_button',function(e) {
+	  
+	  localStorage.ClientId=id;
+	 /* $.mobile.changePage("initiateQuestions.html", {
+              transition: "slide",
+              reverse: false
+              }, true, true);*/
+             
+	
+    });
+ });
+
+$(document).on('pagebeforeshow', '#acceptedClientPage', function(){       
+
+	
+ });
+ 
+        </script>
+    
+	</body>
+</html>

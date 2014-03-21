@@ -1,0 +1,257 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	
+	<title>Contact Client </title>
+		
+	<!--loading style-->	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link type="text/css" rel="stylesheet" href="/css/style.css" />
+	  
+	<!--loading scripts-->  
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  
+ 
+		
+				
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+</style>
+
+    </head>
+    <body>
+		
+<div data-role="page" id="proposedClient"  data-theme="a">
+
+
+	
+      <div data-theme="b" data-role="header">
+         <h5>
+            XYZ Insurance
+          </h5>
+     </div>
+    <div data-role="content">
+		
+		  	
+						
+		<div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist">
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="a" data-icon="" >
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="a" data-icon="">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+		
+		
+		<br>
+		 
+		 
+	
+		
+<div class="content-primary">
+		
+ <div class="ui-grid-a"  >
+	<div class="ui-block-a ">
+	 <div class="ui-bar ui-bar-b" style="height:50px;">Client Name :</div>
+    </div>
+				
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-c" style="height:50px;">Oracle</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Industry:</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-c" style="height:50px;">Software</div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-b" style="height:50px;">Name of Contact  :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-c" style="height:50px;">John le</div>
+    </div>
+
+
+</div><!-- /grid-b -->
+ 
+
+ 
+<div data-role="collapsible-set" >
+
+ <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="b" data-content-theme="c">
+  <h3>Address</h3>
+      	<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+		  
+		Oracle Pvt Ltd<br>Electronic City,Bngalore<br>Karnataka<br>India<br>Zip:674567
+		
+	</div>
+  </div>
+  
+<div data-role="collapsible" data-collapsed="true" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="b" data-content-theme="c">
+  <h3>Contact</h3>
+      	
+		<div class="ui-grid-a">
+		
+			
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-e"style="height:50px;">Mobile Number :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-c"style="height:50px;"><a href="tel:+917742319202"  data-inline="true" >+917742319202</a></div>
+    </div>
+	
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-e" style="height:50px;">Email:</div>
+    </div>
+	
+	<div class="ui-block-b" >
+	  <div class="ui-bar ui-bar-c" style="height:50px;"><a href="mailto:amit.b.chakraborty@accenture.com"  data-inline="true" 
+    rel="external" >john.le.jo@oracle.com</a></div>
+    </div>
+	<div class="ui-block-a">
+	  <div class="ui-bar ui-bar-e"  style="height:50px;">Skype Id :</div>
+    </div>
+	
+	<div class="ui-block-b">
+	  <div class="ui-bar ui-bar-c"  style="height:50px;"><a href="skype:afsal-marattil?call" data-inline="true">john-le</a></div>
+    </div>
+	
+		
+		</div>
+		
+  </div>
+  
+
+ <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-theme="b" data-content-theme="c">
+  <h3>Map</h3>
+      	<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+		  
+		  <div id="map_canvas" class="map rounded"></div>
+		
+	</div>
+  </div>
+	
+</div>
+
+</div><!--content-primary-->
+	
+	<div class="content-secondary">
+	
+	<div class="ui-grid-b">
+	
+	 <div class="ui-block-a" style="height:60px"></div>
+	 <div class="ui-block-a"></div>
+	 <div class="ui-block-b" ><a href="#contactedDialog"  data-role="button" data-rel="dialog" data-theme="b" data-transition="slidedown">Contacted</a></div>
+	 <div class="ui-block-c"></div>
+	 
+	 <div class="ui-block-a" style="height:80px"></div><!--some issue with footer adding to avoid it remove later-->
+	 
+    </div><!-- /grid-b -->
+	
+</div>	
+		</div><!-- /content -->
+	
+<div data-role="footer" class="footer" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>	
+
+</div><!-- /Page -->	
+	
+
+<!-- Start of second page -->
+<div data-role="page" id="contactedDialog">
+    <div data-role="header"  data-theme="b">
+        <h1>
+            XYZ insurance
+        </h1>
+    </div>
+	
+    <div data-role="content"  data-theme="b">
+        
+		<div data-role="fieldcontain">
+		<label for="mydate">Meeting Date</label>
+
+       <input name="mydate" id="mydate" type="date" data-role="datebox"
+       data-options='{"mode": "datebox"}'>
+        </div>
+		
+          <div data-role="fieldcontain">
+            <label for="textarea2">
+                Meeting Notes
+            </label>
+            <textarea name="" id="textarea2" placeholder=""></textarea>
+        </div>
+		
+		
+<div class="ui-grid-a">
+		
+			
+	<div class="ui-block-a">
+	  <a href="accepted.html" data-theme="b" data-icon="forward" data-iconpos="left" data-role="button"> Accept</a>
+    </div>
+	
+	<div class="ui-block-b">
+	  <a href="home.html" data-theme="b"  data-icon="delete" data-iconpos="left"data-role="button"> Reject</a>
+    </div>
+</div>
+	
+      
+      
+        
+    </div> 
+   
+   </div><!-- /content -->
+    
+	<div data-role="footer"  data-theme="b">
+        <h4>
+           
+        </h4>
+    </div>
+</div><!-- /page -->	
+
+	
+		
+		
+
+	
+	<script type="text/javascript">
+		
+             $(document).ready(function() {
+
+  
+		
+  });
+  
+			
+
+        </script>
+    
+	</body>
+</html>

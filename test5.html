@@ -1,0 +1,188 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<title>Proposed</title> 
+	
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+			
+<style>
+
+
+.mypopup{
+    right: 0 !important;        
+    left: auto !important;
+    width: 80%;
+}
+</style>
+
+</head> 
+<body> 
+<div data-role="page" data-theme="a" id="proposedpage">
+	
+
+ 
+	<div data-theme="b"  data-role="header">
+        <h5>
+            XYZ Insurance
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	 <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="a" data-icon="" >
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="a" data-icon="">
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+	 	<br>
+	 <div class="content-primary">
+						
+		<ul data-role="listview" data-filter="true" data-filter-placeholder ="Search Client" data-filter-theme="c" data-theme="b" data-divider-theme="d" data-inset="true"  >
+			<li data-role="list-divider" >Proposed<span class="ui-li-count">1</span></li>
+			<li><a href="#popupGE" data-rel="popup">
+				
+					<h3>GE</h3>
+					
+					<p>click here to view status.</p>
+					<p class="ui-li-aside"><strong>2 Jun 2013</strong></p>
+				
+			</a></li>
+	
+ 
+
+			
+			<li><a href="#popupCart" data-rel="popup">
+				
+					<h3>BELL</h3>
+					
+					<p>click here to view status.</p>
+					<p class="ui-li-aside"><strong>2 Jun 2013</strong></p>
+				
+			</a></li>
+			
+		
+			
+		</ul>
+		</div><!--/content-primary -->		
+
+		
+
+	</div><!-- /content -->
+
+	<div data-role="footer" class="footer" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+
+  <div data-role="popup" id="popupGE" data-transition="flow" data-theme="b" data-overlay-theme="a" >
+	
+
+
+  </div><!--/popup-->  
+  
+   <div data-role="popup" id="popupCart" data-transition="flow" style="width:600px" data-theme="a" data-overlay-theme="b" class="ui-corner-all" >
+   
+   <div data-theme="a"  data-role="header"  class="ui-corner-all">
+        <h5>
+            Cart
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	
+	<ul data-role="listview" id="test-list" data-theme="a" data-split-icon="delete"  data-split-theme="b" data-inset="true" >
+			
+			
+       
+           
+		   <li>
+			<a>
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Term Life Insurance</h3>
+
+			    </a>
+			      <a href="#" id="delete" >Delete</a>
+				 
+			</li>
+			
+            <li>
+			<a><img src="images/products/product1/image_1.PNG"></img>
+              <h3>Group Mortgage Redemption Assurance Scheme</h3>
+
+			    </a>
+			      <a href="#" id="delete" >Delete</a>
+			</li>
+			
+           
+        </ul>
+       
+	 
+	 </div><!--content-->
+	 
+	 	
+
+	<div data-role="footer" style="height:30px" data-theme="a" class="ui-bar">
+		
+
+	<a href="#" data-role="button" style="" class="ui-btn-left" data-inline="true"  data-inset="true" data-rel="back" data-transition="flow" data-theme="a">Add</a>
+	 <a href="#" data-role="button" class="ui-btn-right" data-inline="true"  data-inset="true" data-rel="back" data-transition="flow" data-theme="a">Check Out</a>
+		
+		
+	</div>
+
+  </div><!--/popup-->  
+  
+ 
+ </div><!-- /page -->
+
+	<script>
+	$(document).bind('pageinit', function() {
+  
+ 
+
+	$("#test-list #delete").live("click", function() {
+    var $item = $(this).closest("li"),
+        $list = $(this);
+    $item.remove();
+    //$list.listview("refresh");
+	
+	 
+ $("#popupCart").on(
+   "popupafterclose",
+   function(event) {
+      //alert(event.type);
+   }
+);
+
+	//cart").popup("open");
+});
+
+});
+	
+	</script>
+
+	
+	</body>
+	</html>

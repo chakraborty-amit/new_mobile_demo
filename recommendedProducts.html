@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<!-- Camera is a Pixedelic free jQuery slideshow | Manuel Masia (designer and developer) --> 
+<html> 
+<head> 
+   <meta charset="utf-8">
+	
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Products</title> 
+ 
+     <!--loading style-->
+   <!--loading style-->
+    <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+	 
+ <!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script>  
+
+<style>
+
+		
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+
+.custom-button {
+    height: 90% !important;
+	width:10%;
+}
+
+.custom-button .ui-btn-inner {
+    padding: 0 !important;    
+}
+
+.custom-button .ui-btn-inner .ui-btn-text {
+    display: block !important;
+    height: 50px !important;
+    width: 100% !important;
+    background-image: url('images/checkOut.png') !important;
+    background-repeat: no-repeat  !important;
+    background-position: center  !important; 
+}
+</style>
+
+
+ 
+</head>
+<body>
+
+    <div data-role="page" data-theme="a" id="recommendedProductPage">
+
+   <div data-theme="b" data-role="header" data-position="fixed">
+        <h5>
+            XYZ Insurance
+        </h5>
+		<a href="initiateQuestions.html" data-icon="forward" data-ajax="false">Questions</a>
+		<a href="accepted.html" data-icon="home">Contacted</a>
+    </div>	
+
+	<div data-role="content">
+ 
+	<div class="content-primary">
+	
+		<ul id="cList" data-role="listview"  data-theme="e" data-split-icon="add"  data-split-theme="b" data-inset="true" >
+			
+			
+		</ul>
+		
+	
+		
+	
+		
+   <ul data-role="listview"  data-theme="b" data-split-icon="add"  data-split-theme="b" data-divider-theme="d"  data-inset="true" >
+			
+			<li data-role="list-divider" >Other Products you would like<span class="ui-li-count">3</span></li>
+			
+			<li><a href="products2.html" data-transition="pop"  data-ajax="false">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Investment Linked Insurance Plan</h3>
+				
+				
+                 <p>A group insurance plan that combines the dual advantage of investment and protection and offers the <br>members the best of both worlds. These can also be called as group unit linked plans and give you the <br>advantage of market linked investments<p>
+				
+				<br>
+				<p>click here to view the cooperate broucher.</p>
+			</a>
+			<a  id="addItem" onclick="openPurchasePopUp();">Add to Cart</a>
+			</li>
+			
+			<li><a href="products2.html" data-transition="flip" data-ajax="false">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Leave Encashment Scheme</h3>
+				
+              <p>A Group Leave Encashment Scheme helps the employer to fund their Leave encashment liability <br>payable to your employees. This product can be linked or non linked in nature.</p>
+				
+			<br>
+              <p>click here to view the cooperate broucher.</p>			
+			</a>
+			<a id="addItem" onclick="openPurchasePopUp();">Add to Cart</a>
+			</li>
+			
+			
+			<li><a href="products2.html" data-transition="flip" data-ajax="false">
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Mortgage Redemption Assurance Scheme</h3>
+				
+               <p>Group Mortgage Redemption Assurance Scheme is a group insurance policy that covers the life of a <br>member who has taken a loan.</p>
+				<br>
+				
+			
+               <p>click here to view the cooperate broucher.</p>			
+			  </a>
+			<a  id="addItem" onclick="openPurchasePopUp();">Add to Cart</a>
+			</li>
+			
+		</ul>
+
+
+	
+	
+	
+</div><!--/content-primary -->		
+	<div class="content-Secondary">
+	  <div class="ui-grid-b">
+	
+	                 <div class="ui-block-a" style="height:100px"></div>
+	                  <div class="ui-block-b" >
+					    <!--<a href="#popupCart"  data-theme="b"  data-role="button" data-rel="popup" data-position-to="window" data-transition="pop">Check Out</a>-->
+					  </div>
+					 
+                    <div class="ui-block-a" style="height:100px"></div>
+					</div><!-- /grid-d -->
+					
+ </div><!-- /content-secondary -->
+</div><!-- /content -->
+
+
+<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-corner-all" style=" width:400px;">
+
+ <div data-theme="b" data-role="header" class="ui-corner-all">
+        <h5>
+           Configure
+        </h5>
+    </div>	
+ <div data-role="content">
+ 
+  <div class="content-primary">
+	
+   <form>
+        <div style=" padding:20px 20px;">
+           
+		   
+            <legend>Frequency</legend>
+			 <select name="select-choice-a" id="frequency" data-native-menu="false">
+			     
+			    <option value="Quater">Quater</option>
+			    <option value="Halfyear">Halfyear</option>
+			    <option value="Annual">Annual</option>
+			    
+		     </select>
+			 
+			  <legend>Term</legend>
+			 <select name="select-choice-a" id="term" data-native-menu="false">
+			     
+			    <option value="Quater">Quater</option>
+			    <option value="Halfyear">Halfyear</option>
+			    <option value="Annual">Annual</option>
+			    
+		     </select>
+			 
+			 <div >
+				   <label for="slider">Number of people</label>
+			 	    <input type="range" name="slider" id="quantity" value="50" min="0" max="1000" data-highlight="true"  />
+			 </div>
+			 
+		
+			
+			 <br><br>
+            <button type="button" data-theme="b" id="addToCartButton"data-icon="check">Done</button>
+        </div>
+    </form>
+   </div>
+  </div>
+ </div>
+   <div data-role="popup" id="popupCart" data-transition="flow" style="width:600px" data-theme="a" data-overlay-theme="b" class="ui-corner-all" >
+   
+   <div data-theme="a"  data-role="header"  class="ui-corner-all">
+        <h5>
+            Cart
+        </h5>
+    </div>	
+
+
+	<div data-role="content">
+	
+	
+	<ul data-role="listview" data-theme="a" data-split-icon="delete"  data-split-theme="b" data-inset="true" id="chartList">
+			
+  
+        </ul>
+       
+	  
+	 </div><!--content-->
+	 
+	 	
+
+	<div data-role="footer" style="height:40px" data-theme="a" class="ui-bar">
+		
+              
+        <a href="#"  data-role="button" class="ui-btn-left"  data-rel="back" data-transition="flow" data-theme="b">Add</a>
+         <a href="summary.html" data-role="button" class="ui-btn-right" data-inline="true"  data-inset="true" data-transition="flow" data-theme="b" data-ajax="false">Proceed</a>
+		
+		
+	</div>
+
+  </div><!--/popup--> 
+	
+
+<div data-role="popup" id="addedSummaryPopUp" data-transition="slidedown" style="width:500px" data-theme="e" data-overlay-theme="b" >
+   
+   <div data-role="content" data-theme="b">
+   <div data-theme="a" >
+   <h3>Item added to cart</h3>
+    </div>
+   </div>
+ </div>
+ 
+
+ 
+   
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+		
+		 <a  id="checkout" class="ui-btn-right " data-theme="c"  data-role="button" >Check Out</a>
+	</div>
+
+	</div><!-- /page -->
+
+
+<script>
+	
+var clientID;	
+var DEMODB;
+$(document).on('pageinit', '#recommendedProductPage', function(){       
+  
+  
+
+   
+   initDatabase();
+   selectData();
+   
+   
+    $(document).on('click', '#checkout',function(e) {
+	  
+
+	  $("#popupCart" ).popup( "open" );
+	  
+	  $("#popupCart").on('popupafteropen', function(){
+   
+           
+		   getCartData();
+          	
+		
+			
+    });
+
+	   
+	
+     });
+	 
+   
+  $(document).on('click', '#delete',function(e) {
+	  
+	var $item = $(this).closest("li");
+	var removedProductId=$(this).closest("li").attr('data-name');
+	
+        $list = $(this);
+        $item.remove();
+		var data=[removedProductId];
+		deleteCartItem(data);
+     });
+
+	
+
+
+	
+	
+ });
+
+$(document).on('pagebeforeshow', '#recommendedProductPage', function(){       
+
+
+	
+ 
+  });
+
+
+function getClientId()
+ {
+ 
+ if(localStorage){
+		
+		var clientId = localStorage.getItem('ClientId');
+
+		
+  }
+  return clientId;
+}
+
+
+            var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+
+function initDatabase() {
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			createTable();
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+
+function createTable(){
+
+DEMODB.transaction(
+	    function (transaction) {
+	    	transaction.executeSql("DROP TABLE CART;", [], nullDataHandler, errorHandler);
+	    }
+	);
+	
+	DEMODB.transaction(
+        function (transaction) {
+        	transaction.executeSql('CREATE TABLE IF NOT EXISTS CART(ProductId TEXT NOT NULL PRIMARY KEY,Frequency TEXT,Term TEXT,Quantity TEXT);', [], nullDataHandler, errorHandler);
+			
+			
+        }
+    );
+	
+	
+}
+
+
+
+/***
+**** INSERT INTO TABLE ** 
+***/
+function insertToCart(data){
+
+	  DEMODB.transaction(
+	    function (transaction) {
+    
+		
+transaction.executeSql("INSERT INTO CART(ProductId, Frequency,Term,Quantity) VALUES (?, ?, ?, ?)", [data[0],data[1],data[2],data[3]]);
+		
+	    }
+	);	
+
+}
+
+function deleteCartItem(data){
+	  DEMODB.transaction(
+	    function (transaction) {
+
+		transaction.executeSql("DELETE FROM CART WHERE ProductId=?",[data[0]]);
+		
+	    }
+	);	
+
+}
+
+function errorHandler(transaction, error){
+ 	if (error.code==1){
+ 	} else {
+	    console.log('Oops.  Error was '+error.message+' (Code '+error.code+')');
+ 	}
+    return false;
+}
+
+
+function nullDataHandler(){
+	console.log("SQL Query Succeeded");
+}
+
+
+function selectData(){ 
+
+var productId;
+var productName;
+var prductDescription;
+var productImage;
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM PRODUCTS a,RECOMMENDEDPRODUCTS b WHERE a.ProductId == b.ProductId', [], function (tx, results) {
+   var len = results.rows.length, i;
+  
+   $('#cList').empty();
+  
+   var divider='<li data-role="list-divider" >Recommended Product<span class="ui-li-count">'+len+'</span></li>';
+  $('#cList').append(divider);
+   
+   for (i = 0; i < len; i++){
+
+		loadProductData(results.rows.item(i));				
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT ClientId FROM RECOMMENDEDPRODUCTS', [], function (tx, results) {
+   var len = results.rows.length, i;
+   if(len!=0)
+   {
+   clientID=results.rows.item(0).ClientId;
+   }
+   
+ 
+ }, null);
+ 
+ 
+ 
+});	
+
+
+}
+
+
+
+function openPurchasePopUp(productID)
+{
+
+
+
+$("#purchase" ).popup( "open" );
+
+$("#purchase #addToCartButton").on("click", function(e) {
+
+     var frequency=$('#frequency').val();	
+	 var term=$('#term').val();	
+	 var quantity=$('#quantity').val();
+  
+  
+	 $("#purchase" ).popup( "close" );
+	 
+	  var data=[productID,frequency,term,quantity];
+	  insertToCart(data);
+
+			
+	 });
+	 
+	 
+}
+			
+function loadProductData(record) {
+var productId;
+var productName;
+var prductDescription;
+var productImage;  
+     productId = record.ProductId;
+	 productName = record.ProductName;
+     prductDescription = record.ProductDetails;
+	 productImage = record.ProductImage;
+	
+	       
+     var newLink = '<li data-name="'+productId+'"><a href="products2.html" data-transition="flip"  data-ajax="false"><img src="'+productImage+'"></img> <h3>'+productName+'</h3><p>'+prductDescription+' </p>  <br><p>click here to view the Details. </p></a> <a id="addItem" data-productID="'+productId+'" >Add to Cart</a></li>';
+		
+                    
+			
+		    $('#cList').append(newLink);
+				   
+            $('#cList').listview('refresh');
+			
+			$('#cList li a').click(function(){   
+                              
+             var productID=$(this).attr('data-productID');
+  
+             openPurchasePopUp(productID);			
+
+	         });
+
+        } 
+		
+
+function loadCartData(record) {
+
+var productId;
+var productName;
+var productImage;  
+productId = record.ProductId;
+productName = record.ProductName;
+productImage = record.ProductImage;
+
+ var newCartLink='<li data-name="'+productId+'" ><a><img src="'+productImage+'"></img><h3>'+productName+'</h3> </a><a href="#" id="delete" >Delete</a></li>';
+			
+		
+		    $('#chartList').append(newCartLink);
+				   
+            $('#chartList').listview('refresh');	
+			
+        } 	
+				
+		
+function getCartData(){ 
+
+var productId;
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM PRODUCTS a,CART b WHERE a.ProductId == b.ProductId', [], function (tx, results) {
+   var len = results.rows.length, i;
+   
+   $('#chartList').empty();
+   
+
+   for (i = 0; i < len; i++){
+
+ 
+    loadCartData(results.rows.item(i));
+      			
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+
+
+
+}
+
+
+	</script>
+
+	
+</body> 
+</html>

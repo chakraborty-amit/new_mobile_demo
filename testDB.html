@@ -1,0 +1,221 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	
+	<title>Home</title> 
+ 
+	
+   <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+ 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+
+
+	
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+
+.ui-collapsible-heading .ui-btn-text{ display:block;}
+.ui-collapsible-heading .ui-li-count { position: absolute; font-size: 11px; font-weight: bold; padding: .2em .5em; top: 50%; margin-top: -.9em; right: -10px;  border-radius: 1em 1em 1em 1em; background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;  border: 1px solid #CCCCCC; color: #222222;font-weight: bold;text-shadow: 0 1px 0 #FFFFFF; }
+
+</style>
+	
+</head> 
+<body> 
+
+	<div data-role="page" data-theme="a" class="type-interior" id="homepage">
+
+   <div data-theme="b" data-role="header" data-position="fixed">
+        <h5>
+            XYZ Insurance
+        </h5>
+    </div>	
+
+
+ <div data-role="content">
+	 <div id="navBar" data-role="navbar" data-iconpos="right" class="navBar">
+            <ul>
+                <li>
+                    <a href="home.html" data-transition="slide" data-theme="b" data-icon=""  class="ui-btn-active ui-state-persist" data-ajax="false" >
+                        Open
+                    </a>
+                </li>
+                <li>
+                    <a href="accepted.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                        Contacted
+                    </a>
+                </li>
+                <li>
+                    <a href="proposed.html" data-transition="slide" data-theme="a" data-icon="" data-ajax="false">
+                        Proposed
+                    </a>
+                </li>
+            </ul>
+        </div>
+	 	<br>
+	 <div class="content-primary">
+   
+					
+		</div><!--/content-primary -->		
+	
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+
+	</div><!-- /page -->
+	
+	<script>
+	
+var DEMODB;
+$(document).on('pageinit', '#homepage', function(){       
+  
+  initDatabase();
+  insertProducts();
+   
+ 
+   });
+
+$(document).on('pagebeforeshow', '#homepage', function(){       
+    
+
+				
+});	
+
+
+		
+	
+             var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+function initDatabase() {
+//alert("init DB");
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			createTable();
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+
+function createMyCartTable(){
+
+ DEMODB.transaction(
+	    function (transaction) {
+	    	transaction.executeSql("DROP TABLE MYCART;", [], nullDataHandler, errorHandler);
+	    }
+	);
+	
+	DEMODB.transaction(
+        function (transaction) {
+        	transaction.executeSql('CREATE TABLE MYCART(ProductId TEXT NOT NULL PRIMARY KEY,ProductName TEXT,Frequency TEXT,Term TEXT,Quantity TEXT);', [], nullDataHandler, errorHandler);
+			
+			//alert("table created");
+        }
+    );
+}
+
+
+/***
+**** INSERT INTO TABLE ** 
+***/
+function insertToMyCart(){
+	DEMODB.transaction(
+	    function (transaction) {
+		var data = ["GGP","Group Plan","annual","half","200"]; 
+var data1 = ["GLP","Group Plan","annual","half","200"];		
+		
+		transaction.executeSql("INSERT INTO MYCART(ProductId, ProductName,Frequency,Term,Quantity) VALUES (?, ?, ?, ?, ?)", [data[0], data[1],data[2],data[3],data[4]]);
+		transaction.executeSql("INSERT INTO MYCART(ProductId, ProductName,Frequency,Term,Quantity) VALUES (?, ?, ?, ?, ?)", [data1[0], data1[1],data1[2],data1[3],data1[4]]);
+		//alert("table values generated");
+		//selectData();
+	    }
+	);	
+	
+	DEMODB.transaction(
+	    function (transaction) {
+		
+        var data1 = ["GLP","Group Plan","annual","half","200"];		
+		
+		
+		transaction.executeSql("INSERT INTO MYCART(ProductId, ProductName,Frequency,Term,Quantity) VALUES (?, ?, ?, ?, ?)", [data1[0], data1[1],data1[2],data1[3],data1[4]]);
+		//alert("table values generated");
+		selectData();
+	    }
+	);	
+
+}
+
+
+
+function errorHandler(transaction, error){
+ 	if (error.code==1){
+ 	} else {
+	    console.log('Oops.  Error was '+error.message+' (Code '+error.code+')');
+ 	}
+    return false;
+}
+
+
+function nullDataHandler(){
+	console.log("SQL Query Succeeded");
+}
+
+function selectMyCartData(){ 
+//alert("select data");
+var productId;
+var productName;
+var prductDescription;
+var productImage;
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM MYCART a', [], function (tx, results) {
+   var len = results.rows.length, i;
+  
+  
+   //alert("lenght===:"+len);
+   
+   for (i = 0; i < len; i++){
+
+		//alert(results.rows.item(i).ProductName);				
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+}
+	</script>
+
+	</body>
+	</html>

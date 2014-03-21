@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo by anpsince83</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.6.2.js'></script>
+ 
+  
+    
+      <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css">
+    
+    
+  
+    
+    
+      <script type='text/javascript' src="script/jquery-1.8.2.min"></script>
+    
+  
+  <style type='text/css'>
+    
+  </style>
+  
+
+
+<script type='text/javascript'>
+$(function(){
+$("#test-list #delete").live("click", function() {
+    var $item = $(this).closest("li"),
+        $list = $(this);
+    $item.remove();
+    $list.listview("refresh");
+});
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div id="test-page" data-role="page" data-theme="b">
+    <div data-role="header" data-theme="b"> 
+        <h1>List View Refresh Test</h1> 
+    </div>  
+    
+    <div data-role="content">
+	
+	<a href="#cart" id="popuppp"  data-rel="popup" data-position-to="window" data-transition="pop">pop</a>
+	</div>
+    
+	
+	
+	<div data-role="popup" id="cart"  data-theme="a" data-overlay-theme="b" class="ui-corner-all" style="width:600px;">
+	
+	<div data-role="content">
+	
+	<ul data-role="listview" id="test-list" data-theme="a" data-split-icon="delete"  data-split-theme="b" data-inset="true" >
+			
+			
+       
+           
+		   <li>
+			<a>
+				<img src="images/products/product1/image_1.PNG"></img>
+				<h3>Group Term Life Insurance</h3>
+
+			    </a>
+			      <a href="#" id="delete" >Delete</a>
+				 
+			</li>
+			
+            <li>
+			<a><img src="images/products/product1/image_1.PNG"></img>
+              <h3>Group Mortgage Redemption Assurance Scheme</h3>
+
+			    </a>
+			      <a href="#" id="delete" >Delete</a>
+			</li>
+			
+           
+        </ul>
+        <a id="add-button" href="#" data-role="button" data-icon="plus" data-inline="true">Add</a>
+    </div>
+	
+	</div>
+	
+</div>
+
+  
+</body>
+
+
+</html>
+

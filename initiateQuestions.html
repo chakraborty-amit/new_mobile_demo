@@ -1,0 +1,328 @@
+
+<!DOCTYPE html> 
+<html>
+	<head>
+	<meta charset="utf-8">
+	
+	<meta name = "viewport" content = "user-scalable=1,width=device-width" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Home</title> 
+ 
+	
+   <link rel="stylesheet" href="css/jquery-mobile-1.3.2.min.css" />
+ 
+<!--loading Scripts-->
+<script src="script/jquery-1.8.2.min.js"></script>
+<script src="script/jquery.mobile-1.3.2.min.js"></script> 
+
+
+	
+<style>
+.footer {
+position: fixed;
+z-index: 10;
+bottom: 0;
+width: 100%;
+
+}
+
+.ui-collapsible-heading .ui-btn-text{ display:block;}
+.ui-collapsible-heading .ui-li-count { position: absolute; font-size: 11px; font-weight: bold; padding: .2em .5em; top: 50%; margin-top: -.9em; right: -10px;  border-radius: 1em 1em 1em 1em; background: linear-gradient(#FFFFFF, #F1F1F1) repeat scroll 0 0 #EEEEEE;  border: 1px solid #CCCCCC; color: #222222;font-weight: bold;text-shadow: 0 1px 0 #FFFFFF; }
+
+</style>
+	
+</head> 
+<body> 
+
+	<div data-role="page" data-theme="b" class="type-interior" id="initiateQuestionPage">
+
+   <div data-theme="b" data-position="fixed" data-role="header">
+        <h5>
+            XYZ Insurance
+        </h5>
+		<a href="accepted.html" data-icon="home">Contacted</a>
+    </div>	
+
+
+ <div data-role="content" >
+	 
+	 <div class="content-primary" >
+         
+		
+		<form class="ui-corner-all">
+        <div style=" padding:20px 20px;" >
+           
+		   
+            
+			 <div class="ui-grid-b">
+               <div class="ui-block-a" style="height:10px"></div>
+			</div>  
+			 
+			 <div >
+			
+				   <label for="slider"><h3>Number of employees</h3></label>
+				   
+				   <div class="ui-grid-b">
+                     <div class="ui-block-a" style="height:40px"></div>
+			        </div>
+			
+			 	    <input type="range" name="slider" id="slider" value="50" min="0" max="1000" data-highlight="true"  />
+			
+		
+			 </div>
+			 <div class="ui-grid-b">
+			  
+               <div class="ui-block-a" style="height:40px"></div>
+			</div>
+
+			 <div >
+			
+			   
+			   
+			     	 <h3>Type of coverage requested </h3>
+					 
+					  <div class="ui-grid-b">
+                        <div class="ui-block-a" style="height:40px"></div>
+			         </div>
+					 
+			       <select name="select-coverage" id="select-cover" data-native-menu="false">
+			     
+			         <option value="health"> Health</option>
+			         <option value="Dental">Dental</option>
+			         <option value="Vision"> Vision</option>
+
+		          </select>
+			    
+			</div>
+			
+			<div class="ui-grid-b">
+                <div class="ui-block-a" style="height:40px"></div>
+			 </div>
+			
+			<h3>State</h3>
+			<div class="ui-grid-b">
+                <div class="ui-block-a" style="height:40px"></div>
+			</div>
+			 <select name="select-choice-a" id="select-choice-a" data-native-menu="false">
+			     
+			    <option value="standard"> Washington</option>
+			    <option value="rush">Alabama</option>
+			    <option value="express"> Alaska</option>
+				 <option value="rush">California</option>
+			    <option value="express">  Florida</option>
+				
+				 <option value="rush">Georgia</option>
+			    <option value="express"> Michigan</option>
+				
+				 <option value="rush">New Jersey</option>
+			    <option value="express"> New Mexico</option>
+				
+				
+				 <option value="rush"> New York</option>
+			    <option value="express"> North Carolina</option>
+				
+				
+				 <option value="rush"> Texas</option>
+			    <option value="express">  Vermont</option>
+				
+				
+				 <option value="rush">West Virginia</option>
+			    <option value="express"> Wyoming</option>
+				
+				
+				
+				
+				
+				 <option value="rush">Alabama</option>
+			    <option value="express"> Alaska</option>
+				
+				
+			    
+		     </select>
+			 <div class="ui-grid-b">
+                        <div class="ui-block-a" style="height:80px"></div>
+			         </div>
+		<div class="ui-grid-b">
+                <div class="ui-block-a" ></div>
+				
+				 <div class="ui-block-b"><a href="recommendedProducts.html" id="recommendButton" data-role="button" data-inline="true" data-theme="b" data-transition="slidedown" data-icon="check" data-ajax="false">Recommend Product</a></div>
+	    </div>
+			
+           
+        </div>
+    </form>
+			
+	
+					
+		</div><!--/content-primary -->		
+	
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" data-theme="b">
+		
+		<p>Developed by &copy; 2013 Accenture Technology Labs</p>
+	</div>
+
+	</div><!-- /page -->
+	
+	<script>
+	
+	
+$(document).on('pageinit', '#initiateQuestionPage', function(){       
+  var DEMODB;
+  initDatabase();
+  $(document).on('click', '#recommendButton',function(e) {
+	  
+	var numberOfPeople= $('#slider').val(); 
+	var cover= $('#select-cover').val(); 
+	
+	
+	if(numberOfPeople>400)
+	{
+	
+	var data = ['GGP']; 
+    // insertRecommendedProducts(data);
+	}else
+	{
+	
+	 var data = ['GTL']; 
+	
+    // insertRecommendedProducts(data);
+	}
+	
+           
+	
+    }); 
+ 
+   });
+  
+
+$(document).on('pagebeforeshow', '#initiateQuestionPage', function(){       
+    
+	
+	
+	
+				
+});	
+
+            var shortName = 'SFDCMOBILEDEMODB';
+	        var version = '1.0';
+	        var displayName = 'SFDCMOBILEDEMODB TEST';
+	        var maxSize = 5 * 1024 * 1024;	
+function initDatabase() {
+
+
+	try {
+	    if (!window.openDatabase) {
+	        alert('Local Databases are not supported by your browser.');
+	    } else {
+	        DEMODB = openDatabase(shortName, version, displayName, maxSize);
+			createTable();
+			
+	    }
+	} catch(e) {
+	    if (e == 2) {
+	        console.log("Invalid database version.");
+	    } else {
+	        console.log("Unknown error "+ e +".");
+	    }
+	    return;
+	} 
+}
+
+
+function createTable(){
+
+
+var data = ['Dental'];
+var data2 = ['Health'];
+var data3=['Term_Life'];
+	DEMODB.transaction(
+        function (transaction) {
+        	transaction.executeSql('CREATE TABLE IF NOT EXISTS RECOMMENDEDPRODUCTS(ProductId TEXT);', [], nullDataHandler, errorHandler);
+			transaction.executeSql("DELETE FROM RECOMMENDEDPRODUCTS");
+			
+			 
+              
+			 insertRecommendedProducts(data);
+			 insertRecommendedProducts(data2);
+			 insertRecommendedProducts(data3);
+			 //selectData();
+        }
+    );
+	
+	
+}
+
+
+/***
+**** INSERT INTO TABLE ** 
+***/
+function insertRecommendedProducts(data){
+
+
+	DEMODB.transaction(
+	    function (transaction) {
+
+		transaction.executeSql("INSERT INTO RECOMMENDEDPRODUCTS(ProductId) VALUES (?)", [data[0]]);
+		
+     // alert("inserted RecommendedProducts");
+	    }
+	);	
+	
+	
+
+}
+function selectData(){ 
+
+var productId;
+var productName;
+var prductDescription;
+var productImage;
+
+//DEMODB = openDatabase(shortName, version, displayName, maxSize);
+	
+DEMODB.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM RECOMMENDEDPRODUCTS ', [], function (tx, results) {
+   var len = results.rows.length, i;
+  
+   
+  
+  
+   for (i = 0; i < len; i++){
+
+		//alert(results.rows.item(i).ProductId);				
+   }
+ }, null);
+ 
+ 
+ 
+});	
+
+}
+
+
+
+
+function errorHandler(transaction, error){
+ 	if (error.code==1){
+ 	} else {
+	    console.log('Oops.  Error was '+error.message+' (Code '+error.code+')');
+ 	}
+    return false;
+}
+
+
+function nullDataHandler(){
+	console.log("SQL Query Succeeded");
+}
+
+
+
+
+
+	</script>
+
+	</body>
+	</html>
